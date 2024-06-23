@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useState, useEffect} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import backgroundImage from '../images/hands2.png';
 import {Box} from "@material-ui/core";
@@ -83,17 +83,17 @@ function CountingPage() {
             </Typography>
             <Box className={classes.countdown}>
                 {timeLeft.days > 0 &&
-                    <Box display={'flex'} gap={'20px'} >
+                    <Box display={'flex'} gridGap={'30px'} mt={4}>
                         <div>
-                            <Typography variant="h1" className={classes.countdownItem}>{timeLeft.days} |</Typography>
+                            <Typography variant="h1" className={classes.countdownItem}>{timeLeft.days}</Typography>
                             <Typography variant="body1" className={classes.label}>дни</Typography>
                         </div>
                         <div>
-                            <Typography variant="h1" className={classes.countdownItem}>{timeLeft.hours} |</Typography>
+                            <Typography variant="h1" className={classes.countdownItem}>{timeLeft.hours}</Typography>
                             <Typography variant="body1" className={classes.label}>часы</Typography>
                         </div>
                         <div>
-                            <Typography variant="h1" className={classes.countdownItem}>{timeLeft.minutes} |</Typography>
+                            <Typography variant="h1" className={classes.countdownItem}>{timeLeft.minutes}</Typography>
                             <Typography variant="body1" className={classes.label}>минуты</Typography>
                         </div>
                         <div>
