@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
 import {createTheme, makeStyles, ThemeProvider} from '@material-ui/core/styles';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
@@ -42,6 +46,18 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '20px',
         background: 'white',
     },
+    radioGroup: {
+        color: '#212121!important',
+    },
+    radioChecked: {
+        width: '100%',
+        '& .MuiRadio-colorSecondary.Mui-checked': {
+            color: '#000000', // Set color to black
+        },
+    },
+    radio: {
+        borderRadius: '50%', // Make the radio button itself square
+    },
 }));
 
 const theme = createTheme({
@@ -56,11 +72,11 @@ function ProfilePage() {
     const classes = useStyles();
     const [name, setName] = useState('');
     const [drinkPreferences, setDrinkPreferences] = useState('');
-    const [transportationNeeds, setTransportationNeeds] = useState([1, 0, 0]); // Example format: [1, 0, 0]
+    const [transportationNeeds, setTransportationNeeds] = useState([0, 0, 0]);
 
-    const handleTransportationChange = (index) => {
+    const handleTransportationChange = (event) => {
         const newTransportationNeeds = [0, 0, 0];
-        newTransportationNeeds[index] = 1;
+        newTransportationNeeds[event.target.value] = 1;
         setTransportationNeeds(newTransportationNeeds);
     };
 
@@ -89,26 +105,13 @@ function ProfilePage() {
             <div className={classes.text}>
                 Нужна ли Вам помощь в организации жилья и транспорта до / от места проведения свадьбы
             </div>
-            <div className={classes.text}>
-                <label>
-                    <input type="radio" name="help" value="Нет" checked={transportationNeeds[0] === 1}
-                           onChange={() => handleTransportationChange(0)}/> Нет
-                </label>
-                <br/>
-                <label>
-                    <input type="radio" name="help" value="Да, нужна помощь с организацией жилья"
-                           checked={transportationNeeds[1] === 1}
-                           onChange={() => handleTransportationChange(1)}/> Да, нужна помощь с
-                    организацией жилья
-                </label>
-                <br/>
-                <label>
-                    <input type="radio" name="help" value="Да, нужна помощь с организацией транспорта"
-                           checked={transportationNeeds[2] === 1}
-                           onChange={() => handleTransportationChange(2)}/> Да, нужна
-                    помощь с организацией транспорта
-                </label>
-            </div>
+            <FormControl component="fieldset" className={classes.radioChecked}>
+                <RadioGroup className={classes.radioGroup} value={transportationNeeds[0] ? 0 : transportationNeeds[1] ? 1 : 2} onChange={handleTransportationChange}>
+                    <FormControlLabel value={0} label="Нет" control={<Radio className={classes.radio}/>} />
+                    <FormControlLabel value={1} label="Да, нужна помощь с организацией жилья" control={<Radio className={classes.radio}/>} />
+                    <FormControlLabel value={2} label="Да, нужна помощь с организацией транспорта" control={<Radio className={classes.radio}/>} />
+                </RadioGroup>
+            </FormControl>
             <ThemeProvider theme={theme}>
                 <TextField
                     variant="standard"

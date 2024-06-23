@@ -52,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
 
 function FooterPage() {
     const classes = useStyles();
+    const handleTGChat = () => {
+        window.open('https://t.me/+XgcNLcJ5H1piZmMy');
+    };
+
 
     return (
         <div className={classes.container}>
@@ -70,7 +74,7 @@ function FooterPage() {
             <Typography variant="body1" className={classes.chatTextSecond}>
                 Вступайте в наш Телеграм чат - там будет актуальная информация и фотографии после свадьбы
             </Typography>
-            <Button variant="contained" className={classes.button}>
+            <Button variant="contained" onClick={handleTGChat} className={classes.button}>
                 ПЕРЕЙТИ В ЧАТ
             </Button>
         </div>
