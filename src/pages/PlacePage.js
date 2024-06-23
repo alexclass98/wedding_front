@@ -27,8 +27,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
     },
     button: {
-        border: '1px solid rgba(30, 30, 30, 1)',
-        width: '292px',
+        width: '300px',
         height: '46px',
         borderRadius: '5px',
         opacity: '1',

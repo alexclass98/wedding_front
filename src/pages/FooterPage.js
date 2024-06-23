@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: '400',
         lineHeight: '20.48px',
         textAlign: 'center',
-        width: '200px',
+        width: '300px',
         height: '46px',
         borderRadius: '5px',
         marginTop: '20px',
