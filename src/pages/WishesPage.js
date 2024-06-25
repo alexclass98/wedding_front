@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         color: 'rgba(66, 66, 66, 1)',
         lineHeight: '42.66px',
         textAlign: 'center',
-        margin: '20px 0',
+        margin: '25px 0',
     },
     text: {
         fontFamily: 'Lora',

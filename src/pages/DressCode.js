@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: '500',
         lineHeight: '42.66px',
         textAlign: 'center',
+        marginBottom: '26px'
     },
     dressCodeText: {
         fontFamily: 'Lora',

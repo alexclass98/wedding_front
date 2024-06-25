@@ -78,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '20px 0px 30px 0px',
         maxWidth: '70%',
         whiteSpace: 'pre-line',
+        marginBottom: '15px'
     },
     button: {
         fontFamily: 'Lora',

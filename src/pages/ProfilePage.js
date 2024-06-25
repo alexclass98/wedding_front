@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import {createTheme, makeStyles, ThemeProvider} from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
@@ -26,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '42.66px',
         textAlign: 'center',
         margin: '20px 0',
+        marginBottom: '56px'
     },
     text: {
         width: '100%',
@@ -61,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
         '& .MuiCheckbox-colorSecondary.Mui-checked': {
             color: '#000000', // изменить цвет чекбокса на зеленый при выборе
         },
+        '& .MuiTypography-body1': {
+            color: 'rgba(66, 66, 66, 1)',
+        }
     },
     radio: {
         borderRadius: '50%', // Make the radio button itself square
@@ -79,15 +80,15 @@ function ProfilePage() {
     const classes = useStyles();
     const [name, setName] = useState('');
     const [drinkPreferences, setDrinkPreferences] = useState('')
-    const [first, setFirst] = useState(0);
-    const [first1, setFirst1] = useState(0);
-    const [first2, setFirst2] = useState(0);
+    const [first, setFirst] = useState(null);
+    const [first1, setFirst1] = useState(null);
+    const [first2, setFirst2] = useState(null);
 
 
     const handleFormSubmit = () => {
         axios.post('http://localhost:8082/api/GuestForm/create/', {
             fullName: name,
-            helpSelector: [first, first1, first2],
+            helpSelector: [first, first1, first2].filter(a => a !== null),
             preferences: drinkPreferences
         }).catch((error) => {
             console.log(error)
@@ -106,8 +107,8 @@ function ProfilePage() {
             <ThemeProvider theme={theme}>
                 <TextField
                     variant="standard"
-                    label="Хатнянский Максим, Романова Ирина"
-                    placeholder="Фамилия и имя"
+                    placeholder="Хатнянский Максим, Романова Ирина"
+                    label="Фамилия и имя"
                     fullWidth
                     margin="normal"
                     value={name}
@@ -123,26 +124,38 @@ function ProfilePage() {
             </div>
             <FormGroup className={classes.radioChecked}>
                 <FormControlLabel
-                    control={<Checkbox checked={first}
-                                       onChange={() => setFirst(first === 1 ? 0 : 1)}/>}
+                    control={<Checkbox checked={first === 0}
+                                       onChange={() => {
+                                           if (first === null) {
+                                               setFirst1(null);
+                                               setFirst2(null);
+                                           }
+                                           setFirst(first === 0 ? null : 0)
+                                       }}/>}
                     label="Нет"
                 />
                 <FormControlLabel
                     control={<Checkbox checked={first1}
-                                       onChange={() => setFirst1(first1 === 1 ? 0 : 1)}/>}
+                                       onChange={() => {
+                                           if (first1 === null) setFirst(null)
+                                           setFirst1(first1 === 1 ? null : 1)
+                                       }}/>}
                     label="Да, нужна помощь с организацией жилья"
                 />
                 <FormControlLabel
                     control={<Checkbox checked={first2}
-                                       onChange={() => setFirst2(first2 === 1 ? 0 : 1)}/>}
+                                       onChange={() => {
+                                           if (first2 === null) setFirst(null)
+                                           setFirst2(first2 === 2 ? null : 2)
+                                       }}/>}
                     label="Да, нужна помощь с организацией транспорта"
                 />
             </FormGroup>
             <ThemeProvider theme={theme}>
                 <TextField
                     variant="standard"
-                    label="Сок, б/а пиво, шампанское, вино, коньяк..."
-                    placeholder="Ваши предпочтения по напиткам"
+                    placeholder="Сок, б/а пиво, шампанское, вино, коньяк..."
+                    label="Ваши предпочтения по напиткам"
                     fullWidth
                     margin="normal"
                     value={drinkPreferences}
@@ -153,7 +166,7 @@ function ProfilePage() {
                     }}
                 />
             </ThemeProvider>
-            <Button className={classes.button} onClick={handleFormSubmit}>
+            <Button disabled={name === ''} className={classes.button} onClick={handleFormSubmit}>
                 ОТПРАВИТЬ
             </Button>
         </div>
