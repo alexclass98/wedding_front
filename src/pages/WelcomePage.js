@@ -111,7 +111,13 @@ function WelcomePage() {
         axios.get('http://localhost:8082/api/Welcome/get/' + ID[1])
             .then(function (response) {
                 setData(response.data);
-            });
+            }).catch((error)=>{
+            console.log(error)
+            setData({
+                title: 'ДОРОГИЕ ГОСТИ',
+                text: 'С радостью приглашаем вас разделить с нами самый важный день в нашей жизни – нашу свадьбу!  Ваше присутствие сделает этот день незабываемым и полным радости',
+            })
+        });
     }, [])
 
     // Функция добавления в календарь
