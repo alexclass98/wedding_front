@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '5px',
         opacity: '1',
         marginTop: '20px',
+        marginBottom: '20px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

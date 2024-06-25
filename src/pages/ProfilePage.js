@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '20.48px',
         textAlign: 'center',
         width: '300px',
+        marginBottom: '20px',
         height: '46px',
         borderRadius: '5px',
         marginTop: '20px',

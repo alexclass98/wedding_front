@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '5px',
         opacity: '1',
         background: 'white',
+        marginBottom: '20px',
         "&:hover": {
             backgroundColor: '#808080'
         }

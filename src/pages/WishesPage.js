@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
         width: '300px',
         height: '46px',
         borderRadius: '5px',
+        marginBottom: '20px',
         marginTop: '10px',
         background: 'rgba(66, 66, 66, 1)',
         color: 'rgba(255, 255, 255, 1)',
