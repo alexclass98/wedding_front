@@ -4,6 +4,7 @@ import hands from '../images/hands.jpg';
 import calendar from '../images/calendar.png';
 import {Button} from "@material-ui/core";
 import axios from "axios";
+import ICalendarLink from "react-icalendar-link";
 
 
 const theme = createTheme({
@@ -23,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         height: '100vh',
         fontSize: '24px',
-        backgroundImage: `url(${hands})`,
+        background: `url(${hands}) 30% no-repeat;`,
         backgroundSize: 'cover',
         overflow: 'hidden',
-        margin: 0,
+        padding: '0px 0px 0px 0px',
     },
     firstOverlay: {
         width: '100%',
@@ -38,11 +39,12 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        flexDirection: 'column',
         backgroundColor: 'rgba(30, 30, 30, 0.5)',
         padding: '20px',
         color: '#D9D9D9',
         fontFamily: 'Abhaya Libre',
-        fontSize: '28px',
+        fontSize: '40px',
         fontWeight: '700',
         lineHeight: '54px',
         textAlign: 'center',
@@ -55,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         background: "rgba(241, 241, 241, 1)",
-        padding: '20px',
+        padding: '40px 10px',
         color: '#F1F1F1',
     },
     dearGuests: {
@@ -68,13 +70,14 @@ const useStyles = makeStyles((theme) => ({
     },
     invitationText: {
         fontFamily: 'Lora',
-        fontSize: '16px',
+        fontSize: '18px',
         fontWeight: '400',
         lineHeight: '20.48px',
         textAlign: 'center',
         color: 'rgba(66, 66, 66, 1)',
-        padding: '20px',
+        padding: '20px 0px 30px 0px',
         maxWidth: '70%',
+        whiteSpace: 'pre-line',
     },
     button: {
         fontFamily: 'Lora',
@@ -101,13 +104,21 @@ const useStyles = makeStyles((theme) => ({
         gap: '0',
         opacity: '1',
     },
+    blurOverlay: {
+        position: 'absolute',
+        bottom: -1,
+        left: 0,
+        width: '100%',
+        height: '30%',
+        background: 'linear-gradient(to bottom, rgba(118, 118, 118, 0) 0%, rgba(241, 241, 241, 1) 100%)',
+      },
 }));
 
 function WelcomePage() {
     const classes = useStyles();
     const [data, setData] = useState([]);
 
-    useEffect(() => {
+   useEffect(() => {
         let ID = window.location.pathname.split("/");
         axios.get('http://localhost:8082/api/Welcome/get/' + ID[1])
             .then(function (response) {
@@ -116,40 +127,21 @@ function WelcomePage() {
             console.log(error)
             setData({
                 title: 'ДОРОГИЕ ГОСТИ',
-                text: 'С радостью приглашаем вас разделить с нами самый важный день в нашей жизни – нашу свадьбу!  Ваше присутствие сделает этот день незабываемым и полным радости',
+                text: 'С радостью приглашаем вас разделить с нами самый важный день в нашей жизни – нашу свадьбу!
+
+Ваше присутствие сделает этот день незабываемым и полным радости',
             })
         });
     }, [])
+    
+    // Функция добавления в календарь
+    const event = {
+        title: "Свадьба Максима и Ирины",
+        startTime: "2024-08-31T15:00:00+03:00",
+        endTime: "2024-08-31T23:00:00+03:00",
+        location: "Дивный лес (https://yandex.ru/maps/-/CDCI5VMe)",
+      };
 
-    const addToCalendar = () => {
-        const event = {
-            title: "Свадьба",
-            location: "Веранда “Дивный Лес Красногорский район",
-            description: "Ждём всех вас на свадьбе!",
-            startTime: new Date("2024-08-31T16:00:00"),
-            endTime: new Date("2024-08-31T22:00:00")
-        };
-
-        const calendarEvent = `BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-DTSTART:${event.startTime.toISOString().replace(/[-:]/g, '')}
-DTEND:${event.endTime.toISOString().replace(/[-:]/g, '')}
-SUMMARY:${event.title}
-DESCRIPTION:${event.description}
-LOCATION:${event.location}
-END:VEVENT
-END:VCALENDAR`;
-
-        const blob = new Blob([calendarEvent], {type: 'text/calendar;charset=utf-8'});
-        const url = window.URL.createObjectURL(blob);
-
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', 'event.ics');
-        document.body.appendChild(link);
-        link.click();
-    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -159,6 +151,7 @@ END:VCALENDAR`;
                     <br/>
                     WEDDING DAY
                 </div>
+            <div className={classes.blurOverlay}></div>
             </div>
             <div className={classes.secondOverlay}>
                 <div className={classes.dearGuests}>{data.title}</div>
@@ -166,7 +159,7 @@ END:VCALENDAR`;
                     {data.text}
                 </div>
                 <img src={calendar} alt="calendar" className={classes.calendarImg}/>
-                <Button className={classes.button} onClick={addToCalendar}>ДОБАВИТЬ В КАЛЕНДАРЬ</Button>
+                <ICalendarLink  className={classes.button} event={event}>ДОБАВИТЬ В КАЛЕНДАРЬ</ICalendarLink >
             </div>
         </ThemeProvider>
     );
