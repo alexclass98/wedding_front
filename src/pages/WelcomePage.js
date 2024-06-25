@@ -101,6 +101,14 @@ const useStyles = makeStyles((theme) => ({
         gap: '0',
         opacity: '1',
     },
+    blurOverlay: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        height: '30%',
+        background: 'linear-gradient(to bottom, rgba(118, 118, 118, 0) 0%, rgba(241, 241, 241, 1) 100%)',
+      },
 }));
 
 function WelcomePage() {
@@ -110,7 +118,7 @@ function WelcomePage() {
     useEffect(() => {
         let ID = window.location.pathname.split("/");
         if (ID[1]) {
-          axios.get('http://192.168.0.43:8082/api/Welcome/get/' + ID[1])
+          axios.get('http://localhost:8082/api/Welcome/get/' + ID[1])
             .then(function (response) {
               setData(response.data);
             })
@@ -152,6 +160,7 @@ function WelcomePage() {
                     <br/>
                     WEDDING DAY
                 </div>
+            <div className={classes.blurOverlay}></div>
             </div>
             <div className={classes.secondOverlay}>
                 <div className={classes.dearGuests}>{data.title}</div>
