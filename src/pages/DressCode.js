@@ -1,5 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
+import {Button} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -27,10 +28,25 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         margin: '10px 0',
     },
+    button: {
+        width: '300px',
+        height: '46px',
+        borderRadius: '5px',
+        opacity: '1',
+        background: 'white',
+        "&:hover": {
+            backgroundColor: '#808080'
+        },
+        marginTop: '20px',
+    },
 }));
 
 function DressCode() {
     const classes = useStyles();
+
+    const handleShowMap = () => {
+        window.open('https://pin.it/7DnYdEe9s');
+    };
 
     return (
         <div className={classes.container}>
@@ -41,6 +57,7 @@ function DressCode() {
             <div className={classes.dressCodeText}>
                 Мы не хотим ограничивать Вас в выборе наряда, однако просим воздержаться от ярких цветов
             </div>
+            <Button className={classes.button} onClick={handleShowMap}>Примеры образов</Button>
         </div>
     );
 }
