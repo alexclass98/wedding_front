@@ -112,7 +112,7 @@ function WelcomePage() {
         axios.get('http://localhost:8082/api/Welcome/get/' + ID[1])
             .then(function (response) {
                 setData(response.data);
-            }).catch((error)=>{
+            }).catch((error) => {
             console.log(error)
             setData({
                 title: 'ДОРОГИЕ ГОСТИ',
@@ -121,7 +121,6 @@ function WelcomePage() {
         });
     }, [])
 
-    // Функция добавления в календарь
     const addToCalendar = () => {
         const event = {
             title: "Свадьба",
@@ -130,19 +129,26 @@ function WelcomePage() {
             startTime: new Date("2024-08-31T16:00:00"),
             endTime: new Date("2024-08-31T22:00:00")
         };
-        const url = `data:text/calendar;charset=utf8,${encodeURIComponent(`
-        BEGIN:VCALENDAR
-        VERSION:2.0
-        BEGIN:VEVENT
-        DTSTART:${event.startTime.toISOString().replace(/-|:|\.\d+/g, '')}
-        DTEND:${event.endTime.toISOString().replace(/-|:|\.\d+/g, '')}
-        SUMMARY:${event.title}
-        DESCRIPTION:${event.description}
-        LOCATION:${event.location}
-        END:VEVENT
-        END:VCALENDAR
-        `)}`;
-        window.open(url, '_blank');
+
+        const calendarEvent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:${event.startTime.toISOString().replace(/[-:]/g, '')}
+DTEND:${event.endTime.toISOString().replace(/[-:]/g, '')}
+SUMMARY:${event.title}
+DESCRIPTION:${event.description}
+LOCATION:${event.location}
+END:VEVENT
+END:VCALENDAR`;
+
+        const blob = new Blob([calendarEvent], {type: 'text/calendar;charset=utf-8'});
+        const url = window.URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'event.ics');
+        document.body.appendChild(link);
+        link.click();
     };
 
     return (

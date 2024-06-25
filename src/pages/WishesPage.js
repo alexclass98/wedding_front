@@ -49,14 +49,14 @@ function WishesPage() {
 
     const handleDepositClick = () => {
         // Handle deposit button click
-        console.log('Deposit button clicked');
+        window.open('https://lavka-flower.ru/%D0%9F%D0%BE%D0%B4%D0%B0%D1%80%D0%BE%D1%87%D0%BD%D1%8B%D0%B9-%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82-%D0%A6%D0%B2%D0%B5%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F-%D0%9B%D0%B0%D0%B2%D0%BA%D0%B0-p162790771');
     };
 
     return (
         <div className={classes.container}>
             <div className={classes.title}>ПОЖЕЛАНИЯ</div>
             <div className={classes.text}>
-                Если вы планируете порадовать нас цветами, у нас есть небольшая просьба. Вместо букетов на церемонию, просим положить деньги на счет в цветочном магазине “Название магазина”
+                Если вы планируете порадовать нас цветами, у нас есть небольшая просьба. Вместо букетов на церемонию, просим вас купить сертификат в цветочном магазине  “Цветочная лавка”
             </div>
             <Button className={classes.button} onClick={handleDepositClick}>
                 ПОПОЛНИТЬ СЧЕТ
