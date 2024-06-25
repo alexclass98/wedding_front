@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     addressText: {
         marginBottom: '20px',
         fontFamily: 'Lora',
-        fontSize: '18px',
+        fontSize: '24px',
         fontWeight: '400',
         lineHeight: '23.04px',
         letterSpacing: '0.03em',

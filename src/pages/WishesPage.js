@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     text: {
         fontFamily: 'Lora',
-        fontSize: '16px',
+        fontSize: '18px',
         fontWeight: '400',
         lineHeight: '20.48px',
         textAlign: 'center',

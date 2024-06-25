@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '20px',
         color: '#D9D9D9',
         fontFamily: 'Abhaya Libre',
-        fontSize: '28px',
+        fontSize: '40px',
         fontWeight: '700',
         lineHeight: '54px',
         textAlign: 'center',
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         background: "rgba(241, 241, 241, 1)",
-        padding: '20px',
+        padding: '40px 10px',
         color: '#F1F1F1',
     },
     dearGuests: {
@@ -73,8 +73,9 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '20.48px',
         textAlign: 'center',
         color: 'rgba(66, 66, 66, 1)',
-        padding: '20px',
+        padding: '20px 0px 30px 0px',
         maxWidth: '70%',
+        whiteSpace: 'pre-line',
     },
     button: {
         fontFamily: 'Lora',
@@ -104,15 +105,20 @@ const useStyles = makeStyles((theme) => ({
 
 function WelcomePage() {
     const classes = useStyles();
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({title: "ДОРОГИЕ ГОСТИ!", text: "С радостью приглашаем вас разделить с нами самый важный день в нашей жизни – нашу свадьбу!\n\nВаше присутствие сделает этот день незабываемым и полным радости"});
 
     useEffect(() => {
         let ID = window.location.pathname.split("/");
-        axios.get('http://localhost:8082/api/Welcome/get/' + ID[1])
+        if (ID[1]) {
+          axios.get('http://192.168.0.43:8082/api/Welcome/get/' + ID[1])
             .then(function (response) {
-                setData(response.data);
+              setData(response.data);
+            })
+            .catch(function (error) {
+              console.error("There was an error with the request:", error);
             });
-    }, [])
+        }
+      }, []);
 
     // Функция добавления в календарь
     const addToCalendar = () => {
