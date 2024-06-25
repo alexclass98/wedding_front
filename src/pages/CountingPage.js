@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '100vh',
+        minHeight: '60vh',
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -31,19 +31,25 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: '10px'
     },
     countdownItem: {
         marginRight: '10px',
         fontFamily: 'Lora',
         fontSize: '40px',
         fontWeight: '400',
-        lineHeight: '40px',
+        lineHeight: '50px',
     },
     label: {
         fontFamily: 'Lora',
-        fontSize: '20px',
+        fontSize: '16px',
         fontWeight: '400',
-        lineHeight: '25px',
+        lineHeight: '20px',
+    },
+    verticalDivider: {
+        borderLeft: '3px solid white',
+        height: '50px',
+        margin: '0', // Adjust margin as needed
     },
 }));
 
@@ -83,20 +89,23 @@ function CountingPage() {
             </Typography>
             <Box className={classes.countdown}>
                 {timeLeft.days > 0 &&
-                    <Box display={'flex'} gridGap={'30px'} mt={4}>
-                        <div>
+                    <Box display={'flex'} gridGap={'15px'} mt={4}>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}}>
                             <Typography variant="h1" className={classes.countdownItem}>{timeLeft.days}</Typography>
                             <Typography variant="body1" className={classes.label}>дни</Typography>
                         </div>
-                        <div>
+                        <div className={classes.verticalDivider}/>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}}>
                             <Typography variant="h1" className={classes.countdownItem}>{timeLeft.hours}</Typography>
                             <Typography variant="body1" className={classes.label}>часы</Typography>
                         </div>
-                        <div>
+                        <div className={classes.verticalDivider}/>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}}>
                             <Typography variant="h1" className={classes.countdownItem}>{timeLeft.minutes}</Typography>
                             <Typography variant="body1" className={classes.label}>минуты</Typography>
                         </div>
-                        <div>
+                        <div className={classes.verticalDivider}/>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: "center"}}>
                             <Typography variant="h1" className={classes.countdownItem}>{timeLeft.seconds}</Typography>
                             <Typography variant="body1" className={classes.label}>секунды</Typography>
                         </div>

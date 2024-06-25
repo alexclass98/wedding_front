@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
         opacity: '1',
         margin: '20px 0px',
         background: 'white',
+        marginBottom: '20px',
         "&:hover": {
             backgroundColor: '#808080'
         }
@@ -54,7 +55,7 @@ function PlacePage() {
     const classes = useStyles();
 
     const handleShowMap = () => {
-        window.open('https://www.google.com/maps/search/?api=1&query=Дивный+Лес+Красногорский+район');
+        window.open('https://yandex.ru/maps/org/divny_les/184472836689/?ll=37.243783%2C55.824858&z=11.57');
     };
 
     return (

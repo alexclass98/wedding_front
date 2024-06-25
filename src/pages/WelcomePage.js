@@ -91,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '5px',
         opacity: '1',
         marginTop: '20px',
+        marginBottom: '20px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -115,21 +116,24 @@ const useStyles = makeStyles((theme) => ({
 
 function WelcomePage() {
     const classes = useStyles();
-    const [data, setData] = useState({title: "ДОРОГИЕ ГОСТИ!", text: "С радостью приглашаем вас разделить с нами самый важный день в нашей жизни – нашу свадьбу!\n\nВаше присутствие сделает этот день незабываемым и полным радости"});
+    const [data, setData] = useState([]);
 
-    useEffect(() => {
+   useEffect(() => {
         let ID = window.location.pathname.split("/");
-        if (ID[1]) {
-          axios.get('http://localhost:8082/api/Welcome/get/' + ID[1])
+        axios.get('http://localhost:8082/api/Welcome/get/' + ID[1])
             .then(function (response) {
-              setData(response.data);
-            })
-            .catch(function (error) {
-              console.error("There was an error with the request:", error);
-            });
-        }
-      }, []);
+                setData(response.data);
+            }).catch((error) => {
+            console.log(error)
+            setData({
+                title: 'ДОРОГИЕ ГОСТИ',
+                text: 'С радостью приглашаем вас разделить с нами самый важный день в нашей жизни – нашу свадьбу!
 
+Ваше присутствие сделает этот день незабываемым и полным радости',
+            })
+        });
+    }, [])
+    
     // Функция добавления в календарь
     const event = {
         title: "Свадьба Максима и Ирины",
@@ -137,6 +141,7 @@ function WelcomePage() {
         endTime: "2024-08-31T23:00:00+03:00",
         location: "Дивный лес (https://yandex.ru/maps/-/CDCI5VMe)",
       };
+
 
     return (
         <ThemeProvider theme={theme}>
