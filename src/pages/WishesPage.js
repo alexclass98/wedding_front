@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Playfair Display',
         fontSize: '32px',
         fontWeight: '500',
+        color: 'rgba(66, 66, 66, 1)',
         lineHeight: '42.66px',
         textAlign: 'center',
         margin: '20px 0',
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     text: {
         fontFamily: 'Lora',
         fontSize: '18px',
+        color: 'rgba(66, 66, 66, 1)',
         fontWeight: '400',
         lineHeight: '20.48px',
         textAlign: 'center',

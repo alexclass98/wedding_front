@@ -4,6 +4,7 @@ import hands from '../images/hands.jpg';
 import calendar from '../images/calendar.png';
 import {Button} from "@material-ui/core";
 import axios from "axios";
+import ICalendarLink from "react-icalendar-link";
 
 
 const theme = createTheme({
@@ -23,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         height: '100vh',
         fontSize: '24px',
-        backgroundImage: `url(${hands})`,
+        background: `url(${hands}) 30% no-repeat;`,
         backgroundSize: 'cover',
         overflow: 'hidden',
-        margin: 0,
+        padding: '0px 0px 0px 0px',
     },
     firstOverlay: {
         width: '100%',
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        flexDirection: 'column',
         backgroundColor: 'rgba(30, 30, 30, 0.5)',
         padding: '20px',
         color: '#D9D9D9',
@@ -68,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     },
     invitationText: {
         fontFamily: 'Lora',
-        fontSize: '16px',
+        fontSize: '18px',
         fontWeight: '400',
         lineHeight: '20.48px',
         textAlign: 'center',
@@ -103,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     },
     blurOverlay: {
         position: 'absolute',
-        bottom: 0,
+        bottom: -1,
         left: 0,
         width: '100%',
         height: '30%',
@@ -129,28 +131,12 @@ function WelcomePage() {
       }, []);
 
     // Функция добавления в календарь
-    const addToCalendar = () => {
-        const event = {
-            title: "Свадьба",
-            location: "Веранда “Дивный Лес Красногорский район",
-            description: "Ждём всех вас на свадьбе!",
-            startTime: new Date("2024-08-31T16:00:00"),
-            endTime: new Date("2024-08-31T22:00:00")
-        };
-        const url = `data:text/calendar;charset=utf8,${encodeURIComponent(`
-        BEGIN:VCALENDAR
-        VERSION:2.0
-        BEGIN:VEVENT
-        DTSTART:${event.startTime.toISOString().replace(/-|:|\.\d+/g, '')}
-        DTEND:${event.endTime.toISOString().replace(/-|:|\.\d+/g, '')}
-        SUMMARY:${event.title}
-        DESCRIPTION:${event.description}
-        LOCATION:${event.location}
-        END:VEVENT
-        END:VCALENDAR
-        `)}`;
-        window.open(url, '_blank');
-    };
+    const event = {
+        title: "Свадьба Максима и Ирины",
+        startTime: "2024-08-31T15:00:00+03:00",
+        endTime: "2024-08-31T23:00:00+03:00",
+        location: "Дивный лес (https://yandex.ru/maps/-/CDCI5VMe)",
+      };
 
     return (
         <ThemeProvider theme={theme}>
@@ -168,7 +154,7 @@ function WelcomePage() {
                     {data.text}
                 </div>
                 <img src={calendar} alt="calendar" className={classes.calendarImg}/>
-                <Button className={classes.button} onClick={addToCalendar}>ДОБАВИТЬ В КАЛЕНДАРЬ</Button>
+                <ICalendarLink  className={classes.button} event={event}>ДОБАВИТЬ В КАЛЕНДАРЬ</ICalendarLink >
             </div>
         </ThemeProvider>
     );
