@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         color: 'rgba(66, 66, 66, 1)',
         lineHeight: '42.66px',
         textAlign: 'center',
-        margin: '25px 0',
+        margin: '20px 0',
     },
     text: {
         fontFamily: 'Lora',
@@ -43,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '10px',
         background: 'rgba(66, 66, 66, 1)',
         color: 'rgba(255, 255, 255, 1)',
+        "&:hover": {
+            backgroundColor: 'rgba(66, 66, 66, 1)'
+        },
     },
 }));
 

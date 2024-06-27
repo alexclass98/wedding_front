@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: '500',
         lineHeight: '42.66px',
         textAlign: 'center',
-        marginBottom: '26px'
+        marginBottom: '20px'
     },
     dressCodeText: {
         fontFamily: 'Lora',
@@ -36,11 +36,12 @@ const useStyles = makeStyles((theme) => ({
         height: '46px',
         borderRadius: '5px',
         opacity: '1',
+        fontSize: '18px',
         fontFamily: 'Playfair Display',
         color: 'rgba(66, 66, 66, 1)',
         background: 'white',
         "&:hover": {
-            backgroundColor: '#808080'
+            backgroundColor: 'white'
         },
         marginTop: '20px',
         marginBottom: '20px',

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {makeStyles, createTheme, ThemeProvider} from '@material-ui/core/styles';
 import hands from '../images/hands.jpg';
-import calendar from '../images/calendar.png';
+import calendar from '../images/calendar_v2.png';
 import {Button} from "@material-ui/core";
 import axios from "axios";
 import ICalendarLink from "react-icalendar-link";
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '20.48px',
         textAlign: 'center',
         color: 'rgba(66, 66, 66, 1)',
-        padding: '20px 0px 30px 0px',
+        padding: '20px 0px 20px 0px',
         maxWidth: '70%',
         whiteSpace: 'pre-line',
         marginBottom: '15px'
@@ -91,16 +91,15 @@ const useStyles = makeStyles((theme) => ({
         height: '46px',
         borderRadius: '5px',
         opacity: '1',
-        marginTop: '20px',
-        marginBottom: '20px',
+        marginTop: '30px',
+        marginBottom: '10px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         color: 'white',
     },
     calendarImg: {
-        width: '329px',
-        height: '346px',
+        width: '85%',
         left: '30px',
         gap: '0',
         opacity: '1',
@@ -127,8 +126,8 @@ function WelcomePage() {
             }).catch((error) => {
             console.log(error)
             setData({
-                title: 'ДОРОГИЕ ГОСТИ',
-                text: 'С радостью приглашаем вас разделить с нами самый важный день в нашей жизни – нашу свадьбу! Ваше присутствие сделает этот день незабываемым и полным радости',
+                title: 'ДОРОГИЕ ГОСТИ!',
+                text: 'С радостью приглашаем вас разделить с нами самый важный день в нашей жизни – нашу свадьбу!\n\nВаше присутствие сделает этот день незабываемым и полным радости',
             })
         });
     }, [])

@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
         width: '64px',
         height: '64px',
         marginRight: '20px',
+        marginBottom: '18px'
     },
     text: {
         width: '100%',

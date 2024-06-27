@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '60vh',
+        minHeight: '50vh',
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -99,17 +99,17 @@ function CountingPage() {
                         <div className={classes.verticalDivider}/>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
                             <Typography variant="h1" className={classes.countdownItem}>{timeLeft.hours}</Typography>
-                            <Typography variant="body1" className={classes.label}>часы</Typography>
+                            <Typography variant="body1" className={classes.label}>часов</Typography>
                         </div>
                         <div className={classes.verticalDivider}/>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
                             <Typography variant="h1" className={classes.countdownItem}>{timeLeft.minutes}</Typography>
-                            <Typography variant="body1" className={classes.label}>минуты</Typography>
+                            <Typography variant="body1" className={classes.label}>минут</Typography>
                         </div>
                         <div className={classes.verticalDivider}/>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
                             <Typography variant="h1" className={classes.countdownItem}>{timeLeft.seconds}</Typography>
-                            <Typography variant="body1" className={classes.label}>секунды</Typography>
+                            <Typography variant="body1" className={classes.label}>секунд</Typography>
                         </div>
                     </Box>
                 }

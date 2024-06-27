@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'rgba(30, 30, 30, 0.5)',
         padding: '20px',
         color: '#D9D9D9',
-        marginBottom: '20px',
+        marginBottom: '0px',
         fontFamily: 'Lora',
         fontSize: '24px',
         fontWeight: '400',
@@ -42,11 +42,11 @@ const useStyles = makeStyles((theme) => ({
         height: '46px',
         borderRadius: '5px',
         opacity: '1',
-        margin: '20px 0px',
+        margin: '30px 0px',
         background: 'white',
         marginBottom: '20px',
         "&:hover": {
-            backgroundColor: '#808080'
+            backgroundColor: 'white'
         }
     },
 }));
