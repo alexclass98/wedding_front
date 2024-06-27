@@ -54,20 +54,20 @@ function WishesPage() {
 
     const handleDepositClick = () => {
         // Handle deposit button click
-        window.open('https://lavka-flower.ru/%D0%9F%D0%BE%D0%B4%D0%B0%D1%80%D0%BE%D1%87%D0%BD%D1%8B%D0%B9-%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82-%D0%A6%D0%B2%D0%B5%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F-%D0%9B%D0%B0%D0%B2%D0%BA%D0%B0-p162790771');
+        window.open('https://messenger.online.sberbank.ru/sl/UBFsQvycmre8WL0Cz');
     };
 
     return (
         <div className={classes.container}>
             <div className={classes.title}>ПОЖЕЛАНИЯ</div>
             <div className={classes.text}>
-                Если вы планируете порадовать нас цветами, у нас есть небольшая просьба. Вместо букетов на церемонию, просим вас купить сертификат в цветочном магазине  “Цветочная лавка”
+                Если вы хотите порадовать нас цветами, у нас есть небольшая просьба. Вместо букетов на церемонию, просим вас пополнить специально созданный «Цветочный счет»
             </div>
             <Button className={classes.button} onClick={handleDepositClick}>
-                Купить сертификат
+                Пополнить счет
             </Button>
             <div className={classes.text}>
-                Это позволит нам получать свежие цветы каждую неделю и наслаждаться ими долго после свадьбы.
+                После праздника мы оформим еженедельную доставку свежих цветов, чтобы наслаждаться ими еще долгое время
             </div>
         </div>
     );

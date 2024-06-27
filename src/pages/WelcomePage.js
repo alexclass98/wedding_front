@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
 
 function WelcomePage() {
     const classes = useStyles();
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({ title: '', text: '' });
 
    useEffect(() => {
         let ID = window.location.pathname.split("/");
@@ -126,7 +126,7 @@ function WelcomePage() {
             }).catch((error) => {
             console.log(error)
             setData({
-                title: 'ДОРОГИЕ ГОСТИ!',
+                title: 'ДОРОГИЕ ГОСТИ!',    
                 text: 'С радостью приглашаем вас разделить с нами самый важный день в нашей жизни – нашу свадьбу!\n\nВаше присутствие сделает этот день незабываемым и полным радости',
             })
         });
@@ -138,6 +138,19 @@ function WelcomePage() {
         startTime: "2024-08-31T15:00:00+03:00",
         endTime: "2024-08-31T23:00:00+03:00",
         location: "Дивный лес (https://yandex.ru/maps/-/CDCI5VMe)",
+      };
+
+      const renderTextWithLineBreaks = (data) => {
+        if (!data.text) {
+          return null; // Возвращаем null, если текст отсутствует
+        }
+    
+        return data.text.split('\\n').map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            <br />
+          </React.Fragment>
+        ));
       };
 
 
@@ -154,7 +167,7 @@ function WelcomePage() {
             <div className={classes.secondOverlay}>
                 <div className={classes.dearGuests}>{data.title}</div>
                 <div className={classes.invitationText}>
-                    {data.text}
+                    {renderTextWithLineBreaks(data)}
                 </div>
                 <img src={calendar} alt="calendar" className={classes.calendarImg}/>
                 <ICalendarLink  className={classes.button} event={event}>ДОБАВИТЬ В КАЛЕНДАРЬ</ICalendarLink >
