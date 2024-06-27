@@ -36,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
         height: '46px',
         borderRadius: '5px',
         opacity: '1',
+        fontFamily: 'Playfair Display',
+        color: 'rgba(66, 66, 66, 1)',
         background: 'white',
         "&:hover": {
             backgroundColor: '#808080'

@@ -121,7 +121,7 @@ function WelcomePage() {
 
    useEffect(() => {
         let ID = window.location.pathname.split("/");
-        axios.get('http://localhost:8082/api/Welcome/get/' + ID[1])
+        axios.get('http://khatnyanskiewedding.ru:8082/api/Welcome/get/' + ID[1])
             .then(function (response) {
                 setData(response.data);
             }).catch((error) => {

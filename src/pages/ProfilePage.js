@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: '42.66px',
         textAlign: 'center',
         margin: '20px 0',
-        marginBottom: '56px'
+        marginBottom: '20px'
     },
     text: {
         width: '100%',
@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
         },
         '& .MuiTypography-body1': {
             color: 'rgba(66, 66, 66, 1)',
+            fontFamily: 'Lora',
         }
     },
     radio: {
@@ -86,7 +87,7 @@ function ProfilePage() {
 
 
     const handleFormSubmit = () => {
-        axios.post('http://localhost:8082/api/GuestForm/create/', {
+        axios.post('http://khatnyanskiewedding.ru:8082/api/GuestForm/create/', {
             fullName: name,
             helpSelector: [first, first1, first2].filter(a => a !== null),
             preferences: drinkPreferences
@@ -96,6 +97,7 @@ function ProfilePage() {
     };
 
     const labelStyle = {
+        fontFamily: 'Lora',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
@@ -153,6 +155,7 @@ function ProfilePage() {
             </FormGroup>
             <ThemeProvider theme={theme}>
                 <TextField
+                    fontFamily='Lora'
                     variant="standard"
                     placeholder="Сок, б/а пиво, шампанское, вино, коньяк..."
                     label="Ваши предпочтения по напиткам"

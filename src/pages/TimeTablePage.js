@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Lora',
         fontSize: '20px',
         fontWeight: '400',
+        color: 'rgba(66, 66, 66, 1)',
         lineHeight: '25.6px',
         textAlign: 'center',
     },
@@ -90,10 +91,10 @@ function TimeTablePage() {
                         <div className={classes.text}>17:00<br/>Банкет</div>
                     </div>
                     <div className={classes.scheduleItem}>
-                        <div className={classes.text}>17:30<br/>Торт</div>
+                        <div className={classes.text}>22:00<br/>Торт</div>
                     </div>
                     <div className={classes.scheduleItem}>
-                        <div className={classes.text}>18:00<br/>Завершение<br/> вечера</div>
+                        <div className={classes.text}>23:00<br/>Завершение<br/> вечера</div>
                     </div>
                 </Box>
             </Box>
