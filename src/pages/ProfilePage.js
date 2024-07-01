@@ -4,7 +4,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
-import {Checkbox, FormGroup} from "@material-ui/core";
+import {Checkbox, FormGroup, IconButton, Snackbar} from "@material-ui/core";
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -86,13 +91,29 @@ function ProfilePage() {
     const [first2, setFirst2] = useState(null);
 
 
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState("");
+    const [snackbarSeverity, setSnackbarSeverity] = useState("error");
+
+    const handleCloseSnackbar = () => {
+        setSnackbarOpen(false);
+    };
+
+
     const handleFormSubmit = () => {
         axios.post('http://khatnyanskiewedding.ru:8082/api/GuestForm/create/', {
             fullName: name,
             helpSelector: [first, first1, first2].filter(a => a !== null),
             preferences: drinkPreferences
+        }).then((response) => {
+            setSnackbarMessage('Анкета принята');
+            setSnackbarSeverity('success');
+            setSnackbarOpen(true);
         }).catch((error) => {
             console.log(error)
+            setSnackbarMessage('Технические неполадки');
+            setSnackbarSeverity("error");
+            setSnackbarOpen(true);
         })
     };
 
@@ -105,6 +126,23 @@ function ProfilePage() {
 
     return (
         <div className={classes.container}>
+            <Snackbar
+                open={snackbarOpen}
+                positi
+                anchorOrigin={{vertical: "top", horizontal: "right"}}
+                sx={{width: "100%", maxWidth: "100%"}}
+                autoHideDuration={5000}
+                onClose={handleCloseSnackbar}
+                message={snackbarMessage}
+            >
+                <Alert
+                    onClose={handleCloseSnackbar}
+                    sx={{width: "100%"}}
+                    severity={snackbarSeverity}
+                >
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
             <div className={classes.title}>АНКЕТА ГОСТЯ</div>
             <ThemeProvider theme={theme}>
                 <TextField

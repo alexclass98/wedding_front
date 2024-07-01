@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {makeStyles, createTheme, ThemeProvider} from '@material-ui/core/styles';
 import hands from '../images/hands.jpg';
 import calendar from '../images/calendar_v2.png';
-import {Button} from "@material-ui/core";
 import axios from "axios";
 import ICalendarLink from "react-icalendar-link";
 
@@ -97,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         color: 'white',
+        textDecoration: 'none',
     },
     calendarImg: {
         width: '85%',
