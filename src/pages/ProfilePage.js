@@ -52,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '5px',
         marginTop: '20px',
         background: 'white',
+        marginBottom: '20px',
+        "&:hover": {
+            backgroundColor: 'white'
+        }
     },
     radioGroup: {
         color: '#212121!important',
